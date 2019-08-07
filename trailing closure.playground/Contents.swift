@@ -47,6 +47,37 @@ loadData(id: "hello") { (result) in
     print(result)
 }
 
+
+let callString: () -> String = { () in
+    return "hello"
+}
+callString()
+
+let setupView: UIView = {
+    let view = UIView()
+    view.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
+    view.backgroundColor = .green
+    return view
+}() // <- added () to the end, the init happens using closure.
+
+var addClosure:(Int, Int) -> Int = { $0 + $1 }
+addClosure(2, 3)
+let addClosure2 = addClosure(4, 5) //same closure in memory.
+
+
+
+
+/*
+ self.present(nextViewController, animated: true, completion: {
+    print("Hello World")
+ })
+*/
+
+
+
+
+
+
 //Network Request (real-world asynchronous).
 
 typealias NetworkingResponse = ([String: Any]?, Error?) -> Void
